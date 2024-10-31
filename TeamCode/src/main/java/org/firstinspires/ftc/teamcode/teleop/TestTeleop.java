@@ -63,22 +63,22 @@ public class TestTeleop extends LinearOpMode {
 //                robot.slideMotor.setTargetPosition(0);
 //
 //            }
-            if (robot.clawServo.getPosition() == 1 && gamepad1.a == true) {
-                robot.clawServo.setPosition(0);
-                sleep(500);
-            } else if (robot.clawServo.getPosition() == 0 && gamepad1.a == true) {
-                robot.clawServo.setPosition(1);
-                sleep(500);
-            }
-                if (gamepad1.dpad_up == true) {
-                    robot.slideMotor.setPower(1);
-
-                } else if (gamepad1.dpad_down == true) {
-                    robot.slideMotor.setPower(-1);
-
-                } else {
-                    robot.slideMotor.setPower(0);
-                }
+//            if (robot.clawServo.getPosition() == 1 && gamepad1.a == true) {
+//                robot.clawServo.setPosition(0);
+//                sleep(500);
+//            } else if (robot.clawServo.getPosition() == 0 && gamepad1.a == true) {
+//                robot.clawServo.setPosition(1);
+//                sleep(500);
+//            }
+//                if (gamepad1.dpad_up == true) {
+//                    robot.slideMotor.setPower(1);
+//
+//                } else if (gamepad1.dpad_down == true) {
+//                    robot.slideMotor.setPower(-1);
+//
+//                } else {
+//                    robot.slideMotor.setPower(0);
+//                }
 //            if (gamepad2.a == true) {
 //                robot.slideMotor.setPower(1);
 //                robot.slideMotor.setTargetPosition(0);
@@ -136,13 +136,13 @@ public class TestTeleop extends LinearOpMode {
 //                telemetry.update();
 //            }
 
-            if (robot.wristServo.getPosition() == 1 && gamepad1.x == true){
-                robot.wristServo.setPosition(0);
-                sleep(500);
-            } else if (robot.wristServo.getPosition() == 0 && gamepad1.x == true){
-                robot.wristServo.setPosition(1);
-                sleep(500);
-            }
-                }
-            }
-        }
+//            if (robot.wristServo.getPosition() == 1 && gamepad1.x == true){
+//                robot.wristServo.setPosition(0);
+//                sleep(500);
+//            } else if (robot.wristServo.getPosition() == 0 && gamepad1.x == true){
+//                robot.wristServo.setPosition(1);
+//                sleep(500);
+//            }
+//                }
+//            }
+//        }
