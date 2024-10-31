@@ -18,7 +18,7 @@ import java.nio.ByteBuffer;
 import java.util.Arrays;
 
 /**
- * {@link SparkFunOTOS} is the Java driver for the SparkFun Qwiic Optical Tracking Odometry Sensor
+ * {@link SparkFunOTOS} is the Java driver for the SparkFun Qwiic Optical Trackingi Odometry Sensor
  * (OTOS). This is a port of the Arduino library.
  *
  * @see <a href="https://www.sparkfun.com/products/24904">SparkFun OTOS Product Page</a>
