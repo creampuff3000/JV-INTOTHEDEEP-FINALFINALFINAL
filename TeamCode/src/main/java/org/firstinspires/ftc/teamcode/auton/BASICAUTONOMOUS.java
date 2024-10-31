@@ -12,7 +12,7 @@ import org.firstinspires.ftc.teamcode.Projects.HWMap;
 public class BASICAUTONOMOUS extends LinearOpMode {
     enum Parking {
         rBlue,
-        lBlue,
+        lBlue,//a
         rRed,
         lRed,
     }

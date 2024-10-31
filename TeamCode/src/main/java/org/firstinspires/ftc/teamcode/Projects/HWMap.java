@@ -3,7 +3,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
-//hyubihyb
+//hyubihyba
 public class HWMap extends Project{
     public DcMotor  frontLeftDrive   = null;
     public DcMotor  frontRightDrive  = null;

@@ -16,7 +16,7 @@ public class BluePropDetectionPipeline extends OpenCvPipeline {
     Telemetry telemetry;
     //video frame of camera, is our input for processFrame()
     Mat mat = new Mat();
-
+//a
     public enum BluePropLocation {
         LEFT,
         MIDDLE,

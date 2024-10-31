@@ -12,7 +12,7 @@ import org.openftc.easyopencv.OpenCvPipeline;
 //OpenCV to cycle a cone during autonomous
 public class RedPropDetectionPipeline extends OpenCvPipeline {
     Telemetry telemetry;
-    //video frame of camera, is our input for processFrame()
+    //video frame of acamera, is our input for processFrame()
     Mat mat = new Mat();
 
     public enum RedPropLocation {
