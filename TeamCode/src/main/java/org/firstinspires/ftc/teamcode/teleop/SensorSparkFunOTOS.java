@@ -48,12 +48,12 @@ public class SensorSparkFunOTOS extends LinearOpMode {
             SparkFunOTOS.Pose2D pos = myOtos.getPosition();
 
             // Reset the tracking if the user requests it
-            if (gamepad1.y) {
+            if (gamepad2.y) {
                 myOtos.resetTracking();
             }
 
             // Re-calibrate the IMU if the user requests it
-            if (gamepad1.x) {
+            if (gamepad2.x) {
                 myOtos.calibrateImu();
             }
 

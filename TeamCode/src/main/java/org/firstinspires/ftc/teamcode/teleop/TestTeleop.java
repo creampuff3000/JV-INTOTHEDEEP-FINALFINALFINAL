@@ -143,6 +143,6 @@ public class TestTeleop extends LinearOpMode {
 //                robot.wristServo.setPosition(1);
 //                sleep(500);
 //            }
-//                }
-//            }
-//        }
+                }
+            }
+        }
