@@ -9,11 +9,12 @@ public class HWMap extends Project{
     public DcMotor  frontRightDrive  = null;
     public DcMotor  backLeftDrive = null;
     public DcMotor  backRightDrive     = null;
-//    public DcMotor slideMotor = null;
-//    public Servo clawServo = null;
-//    public Servo wristServo = null;
-//    public DcMotor elbowMotor = null;
-//    public WebcamName camera = null;
+    public Servo LelbowServo = null;
+    public Servo RelbowServo = null;
+    public DcMotor slideMotor = null;
+    public Servo clawServo = null;
+    public Servo wristServo = null;
+
     @Override
     public void init(HardwareMap hwMap) {
         // Define and Initialize Motors
@@ -22,17 +23,20 @@ public class HWMap extends Project{
         frontRightDrive = hwMap.get(DcMotor.class, "frontRightDrive");
         backLeftDrive = hwMap.get(DcMotor.class, "backLeftDrive");
         backRightDrive = hwMap.get(DcMotor.class, "backRightDrive");
-//        slideMotor = hwMap.get(DcMotor.class, "SlideMotor");
-//        clawServo = hwMap.get(Servo.class, "clawServo");
-//        wristServo = hwMap.get(Servo.class, "wristServo");
-////        elbowMotor = hwMap.get(DcMotor.class, "elbowMotor");
+        slideMotor = hwMap.get(DcMotor.class, "SlideMotor");
+        clawServo = hwMap.get(Servo.class, "clawServo");
+        wristServo = hwMap.get(Servo.class, "wristServo");
+        RelbowServo = hwMap.get(Servo.class, "RelbowServo");
+        LelbowServo = hwMap.get(Servo.class, "LelbowServo");
         frontLeftDrive.setDirection(DcMotor.Direction.FORWARD);
         frontRightDrive.setDirection(DcMotor.Direction.REVERSE);
         backLeftDrive.setDirection(DcMotor.Direction.FORWARD);
         backRightDrive.setDirection(DcMotor.Direction.REVERSE);
-//        slideMotor.setDirection(DcMotor.Direction.REVERSE);
-        //change prob
-        //also change prob
+        slideMotor.setDirection(DcMotor.Direction.REVERSE);
+        RelbowServo.setDirection(Servo.Direction.REVERSE);
+        LelbowServo.setDirection(Servo.Direction.FORWARD);
+//        change prob
+//        also change prob
         frontRightDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         frontLeftDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         backRightDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
