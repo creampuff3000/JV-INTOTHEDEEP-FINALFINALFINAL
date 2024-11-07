@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.Projects;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
@@ -11,7 +12,8 @@ public class HWMap extends Project{
     public DcMotor  backRightDrive     = null;
     public Servo LelbowServo = null;
     public Servo RelbowServo = null;
-    public DcMotor slideMotor = null;
+    public DcMotor RslideMotor = null;
+    public DcMotor LslideMotor = null;
     public Servo clawServo = null;
     public Servo wristServo = null;
 
@@ -23,7 +25,8 @@ public class HWMap extends Project{
         frontRightDrive = hwMap.get(DcMotor.class, "frontRightDrive");
         backLeftDrive = hwMap.get(DcMotor.class, "backLeftDrive");
         backRightDrive = hwMap.get(DcMotor.class, "backRightDrive");
-        slideMotor = hwMap.get(DcMotor.class, "SlideMotor");
+        RslideMotor = hwMap.get(DcMotor.class, "RslideMotor");
+        LslideMotor = hwMap.get(DcMotor.class, "LslideMotor");
         clawServo = hwMap.get(Servo.class, "clawServo");
         wristServo = hwMap.get(Servo.class, "wristServo");
         RelbowServo = hwMap.get(Servo.class, "RelbowServo");
@@ -32,7 +35,8 @@ public class HWMap extends Project{
         frontRightDrive.setDirection(DcMotor.Direction.REVERSE);
         backLeftDrive.setDirection(DcMotor.Direction.FORWARD);
         backRightDrive.setDirection(DcMotor.Direction.REVERSE);
-        slideMotor.setDirection(DcMotor.Direction.REVERSE);
+        RslideMotor.setDirection(DcMotor.Direction.FORWARD);
+        LslideMotor.setDirection(DcMotor.Direction.REVERSE);
         RelbowServo.setDirection(Servo.Direction.FORWARD);
         LelbowServo.setDirection(Servo.Direction.REVERSE);
 //        change prob

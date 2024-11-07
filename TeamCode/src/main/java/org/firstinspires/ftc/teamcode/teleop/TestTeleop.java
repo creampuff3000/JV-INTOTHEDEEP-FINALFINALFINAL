@@ -64,13 +64,16 @@ public class TestTeleop extends LinearOpMode {
                 sleep(500);
             }
                 if (gamepad2.dpad_up == true) {
-                    robot.slideMotor.setPower(1);
+                    robot.LslideMotor.setPower(1);
+                    robot.RslideMotor.setPower(1);
 
                 } else if (gamepad2.dpad_down == true) {
-                    robot.slideMotor.setPower(-1);
+                    robot.LslideMotor.setPower(-1);
+                    robot.RslideMotor.setPower(-1);
 
                 } else {
-                    robot.slideMotor.setPower(0);
+                    robot.RslideMotor.setPower(0);
+                    robot.LslideMotor.setPower(0);
                 }
 //            if (gamepad2.a == true) {
 //                robot.slideMotor.setPower(1);
