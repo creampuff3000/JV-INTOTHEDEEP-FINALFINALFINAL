@@ -33,8 +33,8 @@ public class HWMap extends Project{
         backLeftDrive.setDirection(DcMotor.Direction.FORWARD);
         backRightDrive.setDirection(DcMotor.Direction.REVERSE);
         slideMotor.setDirection(DcMotor.Direction.REVERSE);
-        RelbowServo.setDirection(Servo.Direction.REVERSE);
-        LelbowServo.setDirection(Servo.Direction.FORWARD);
+        RelbowServo.setDirection(Servo.Direction.FORWARD);
+        LelbowServo.setDirection(Servo.Direction.REVERSE);
 //        change prob
 //        also change prob
         frontRightDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
