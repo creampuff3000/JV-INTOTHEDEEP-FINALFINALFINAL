@@ -10,8 +10,7 @@ public class HWMap extends Project{
     public DcMotor  frontRightDrive  = null;
     public DcMotor  backLeftDrive = null;
     public DcMotor  backRightDrive     = null;
-    public Servo LelbowMotor = null;
-    public Servo RelbowMotor = null;
+    public DcMotor RelbowMotor = null;
     public DcMotor RslideMotor = null;
     public DcMotor LslideMotor = null;
     public Servo clawServo = null;
@@ -29,16 +28,14 @@ public class HWMap extends Project{
         LslideMotor = hwMap.get(DcMotor.class, "LslideMotor");
         clawServo = hwMap.get(Servo.class, "clawServo");
         wristServo = hwMap.get(Servo.class, "wristServo");
-        RelbowMotor = hwMap.get(Servo.class, "RelbowMotor");
-        LelbowMotor = hwMap.get(Servo.class, "LelbowMotor");
+        RelbowMotor = hwMap.get(DcMotor.class, "RelbowMotor");
         frontLeftDrive.setDirection(DcMotor.Direction.FORWARD);
         frontRightDrive.setDirection(DcMotor.Direction.REVERSE);
         backLeftDrive.setDirection(DcMotor.Direction.FORWARD);
         backRightDrive.setDirection(DcMotor.Direction.REVERSE);
         RslideMotor.setDirection(DcMotor.Direction.FORWARD);
         LslideMotor.setDirection(DcMotor.Direction.REVERSE);
-        RelbowMotor.setDirection(Servo.Direction.FORWARD);
-        LelbowMotor.setDirection(Servo.Direction.REVERSE);
+        RelbowMotor.setDirection(DcMotor.Direction.FORWARD);
 //        change prob
 //        also change prob
         frontRightDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);

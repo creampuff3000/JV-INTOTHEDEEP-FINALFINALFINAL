@@ -42,19 +42,15 @@ public class TestTeleop extends LinearOpMode {
 
             //start coding here
 
-            if(gamepad2.b == true){
-                robot.LelbowMotor.setPosition(0);
-                robot.RelbowMotor.setPosition(0);
-            }
-            if(gamepad2.x == true){
-                robot.LelbowMotor.setPosition(.5);
-                robot.RelbowMotor.setPosition(.5);
-            }
             if(gamepad2.y == true){
-                robot.LelbowMotor.setPosition(1);
-                robot.RelbowMotor.setPosition(1);
+                robot.RelbowMotor.setPower(0.3);
             }
-
+            else if (gamepad2.x == true){
+                robot.RelbowMotor.setPower(-0.3);
+            }
+            else {
+                robot.RelbowMotor.setPower(0);
+            }
 
             if (robot.clawServo.getPosition() == 1 && gamepad2.a == true) {
                 robot.clawServo.setPosition(0);

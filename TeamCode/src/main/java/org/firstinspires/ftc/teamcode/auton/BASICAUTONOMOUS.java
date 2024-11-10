@@ -95,15 +95,13 @@ public class BASICAUTONOMOUS extends LinearOpMode {
         waitForStart(); //wait for play button to be pressed
 
         if (Alliance == Parking.rBlue) {
-            strafeLeft(0.1);
-            tile(1.6);
-            strafeRight(0.2);
+            tile(1.5);
+            specimen("high");
+
         }
         if (Alliance == Parking.rRed) {
-            strafeLeft(0.1);
-            tile(1.6);
-            strafeRight(0.2
-            );
+            tile(1.5);
+            specimen("high");
         }
 
         if (Alliance == Parking.lRed) {
@@ -206,5 +204,30 @@ public class BASICAUTONOMOUS extends LinearOpMode {
         robot.backRightDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         robot.backLeftDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
+    public void specimen(String height){
+        double slidePos1 = robot.LslideMotor.getCurrentPosition();
+        double slidePos2 = robot.RslideMotor.getCurrentPosition();
+        if (height == "low"){
+            robot.LslideMotor.setTargetPosition(10);
+            robot.RslideMotor.setTargetPosition(10);
+        }
+        else{
+            robot.LslideMotor.setTargetPosition(20);
+            robot.RslideMotor.setTargetPosition(20);
+        }
+
+        robot.LslideMotor.setPower(1);
+        robot.RslideMotor.setPower(1);
+        robot.LslideMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        robot.RslideMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        while (robot.LslideMotor.isBusy() && robot.RslideMotor.isBusy() ) {
+
+        }
+        robot.RslideMotor.setPower(0);
+        robot.LslideMotor.setPower(0);
+        robot.RslideMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        robot.LslideMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+    }
+
 }
 
