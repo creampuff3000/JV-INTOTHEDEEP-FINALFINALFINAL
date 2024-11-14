@@ -80,7 +80,7 @@ public class TestTeleop extends LinearOpMode {
 
             if (gamepad2.a == true) {
                 int rVal = robot.RelbowMotor.getCurrentPosition();
-                telemetry.addLine("Pos: " + rVal);
+                telemetry.addLine("mPos: " + rVal);
                 telemetry.update();
                 int diff1 = 100 - rVal;
                 if (rVal > 100){
