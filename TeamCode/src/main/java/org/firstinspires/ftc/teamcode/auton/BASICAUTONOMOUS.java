@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.hardware.Gamepad;
 
 import org.firstinspires.ftc.teamcode.Projects.HWMap;
 
-@Autonomous(name = "BASICAUTONOMOUS")
+@Autonomous(name = "why dont you guys just use xbox controllers")
 
 public class BASICAUTONOMOUS extends LinearOpMode {
     enum Parking {

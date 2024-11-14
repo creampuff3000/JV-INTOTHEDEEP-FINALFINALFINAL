@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.teleop;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.DcMotor;
 
 import org.firstinspires.ftc.teamcode.Projects.HWMap;
 
@@ -42,65 +43,81 @@ public class TestTeleop extends LinearOpMode {
 
             //start coding here
 
-            if(gamepad2.y == true){
-                robot.RelbowMotor.setPower(0.3);
-            }
-            else if (gamepad2.x == true){
-                robot.RelbowMotor.setPower(-0.3);
-            }
-            else {
-                robot.RelbowMotor.setPower(0);
-            }
+//            if(gamepad2.y == true){
+//                robot.RelbowMotor.setPower(1);
+//            }
+//            else if (gamepad2.a == true){
+//                robot.RelbowMotor.setPower(-1);
+//            }
+//            else {
+//                robot.RelbowMotor.setPower(0);
+//            }
 
-            if (robot.clawServo.getPosition() == 1 && gamepad2.a == true) {
+            if (robot.clawServo.getPosition() == 1 && gamepad2.x == true) {
                 robot.clawServo.setPosition(0);
                 sleep(500);
-            } else if (robot.clawServo.getPosition() == 0 && gamepad2.a == true) {
+            } else if (robot.clawServo.getPosition() == 0 && gamepad2.x == true) {
                 robot.clawServo.setPosition(1);
                 sleep(500);
             }
-                if (gamepad2.dpad_up == true) {
-                    robot.LslideMotor.setPower(1);
-                    robot.RslideMotor.setPower(1);
+            if (gamepad2.dpad_up == true) {
+                robot.LslideMotor.setPower(1);
+                robot.RslideMotor.setPower(1);
 
-                } else if (gamepad2.dpad_down == true) {
-                    robot.LslideMotor.setPower(-1);
-                    robot.RslideMotor.setPower(-1);
+            } else if (gamepad2.dpad_down == true) {
+                robot.LslideMotor.setPower(-1);
+                robot.RslideMotor.setPower(-1);
 
-                } else {
-                    robot.RslideMotor.setPower(0);
-                    robot.LslideMotor.setPower(0);
-                }
-//            if (gamepad2.a == true) {
-//                robot.slideMotor.setPower(1);
-//                robot.slideMotor.setTargetPosition(0);
-//            }
-//            if (gamepad2.x == true) {
-//                int rVal = robot.slideMotor.getCurrentPosition();
+            } else {
+                robot.RslideMotor.setPower(0);
+                robot.LslideMotor.setPower(0);
+            }
+
+            if (gamepad2.y == true) {
+                robot.RelbowMotor.setPower(1);
+                robot.RelbowMotor.setTargetPosition(0);
+            }
+//            if (gamepad2.y == true) {
+//                int rVal = robot.RelbowMotor.getCurrentPosition();
 //                int diff1 = 1200 - rVal;
-//                robot.slideMotor.setPower(1);
+//                robot.RelbowMotor.setPower(1);
 //                if (rVal > 1200){
-//                    robot.slideMotor.setTargetPosition(rVal - Math.abs(diff1));
+//                    robot.RelbowMotor.setTargetPosition(rVal - Math.abs(diff1));
 //                }
 //                if (rVal < 1200){
-//                    robot.slideMotor.setTargetPosition(rVal + Math.abs(diff1));
+//                    robot.RelbowMotor.setTargetPosition(rVal + Math.abs(diff1));
 //                }
-//                telemetry.addLine("Lift encoder right side: " + robot.slideMotor.getCurrentPosition());
+//                telemetry.addLine("Lift encoder right side: " + robot.RelbowMotor.getCurrentPosition());
 //                telemetry.update();
 //            }
-//            if (gamepad2.b == true) {
-//                int rVal = robot.slideMotor.getCurrentPosition();
-//                int diff1 = 2000 - rVal;
-//                robot.slideMotor.setPower(1);
-//                if (rVal > 2000){
-//                    robot.slideMotor.setTargetPosition(rVal - Math.abs(diff1));
-//                }
-//                if (rVal < 2000){
-//                    robot.slideMotor.setTargetPosition(rVal + Math.abs(diff1));
-//                }
-//                telemetry.addLine("Lift encoder right side: " + robot.slideMotor.getCurrentPosition());
-//                telemetry.update();
-//            }
+            if (gamepad2.a == true) {
+                int rVal = robot.RelbowMotor.getCurrentPosition();
+                telemetry.addLine("Pos: " + rVal);
+                telemetry.update();
+                int diff1 = 100 - rVal;
+                if (rVal > 100){
+                    robot.RelbowMotor.setTargetPosition(rVal - Math.abs(diff1));
+                    robot.RelbowMotor.setPower(1);
+                    robot.RelbowMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    while (robot.RelbowMotor.isBusy()) {
+
+                    }
+                    robot.RelbowMotor.setPower(0);
+                    robot.RelbowMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+                }
+                if (rVal < 100){
+                    robot.RelbowMotor.setTargetPosition(rVal + Math.abs(diff1));
+                    robot.RelbowMotor.setPower(1);
+                    robot.RelbowMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    while (robot.RelbowMotor.isBusy()) {
+
+                    }
+                    robot.RelbowMotor.setPower(0);
+                    robot.RelbowMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+                }
+                telemetry.addLine("Lift encoder right side: " + robot.RelbowMotor.getCurrentPosition());
+                telemetry.update();
+            }
 //            if (gamepad2.y == true) {
 //                int rVal = robot.slideMotor.getCurrentPosition();
 //                int diff1 = 2800 - rVal;
@@ -128,10 +145,10 @@ public class TestTeleop extends LinearOpMode {
 //                telemetry.update();
 //            }
 
-            if (robot.wristServo.getPosition() == 1 && gamepad2.right_bumper == true){
+            if (robot.wristServo.getPosition() == 1 && gamepad2.b == true){
                 robot.wristServo.setPosition(0);
                 sleep(500);
-            } else if (robot.wristServo.getPosition() == 0 && gamepad2.right_bumper == true){
+            } else if (robot.wristServo.getPosition() == 0 && gamepad2.b == true){
                 robot.wristServo.setPosition(1);
                 sleep(500);
             }

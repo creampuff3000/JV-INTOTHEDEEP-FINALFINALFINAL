@@ -35,7 +35,7 @@ public class HWMap extends Project{
         backRightDrive.setDirection(DcMotor.Direction.REVERSE);
         RslideMotor.setDirection(DcMotor.Direction.FORWARD);
         LslideMotor.setDirection(DcMotor.Direction.REVERSE);
-        RelbowMotor.setDirection(DcMotor.Direction.FORWARD);
+        RelbowMotor.setDirection(DcMotor.Direction.REVERSE);
 //        change prob
 //        also change prob
         frontRightDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
@@ -44,6 +44,7 @@ public class HWMap extends Project{
         backLeftDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         RslideMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         LslideMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        RelbowMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
 //        slideMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         frontRightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -52,6 +53,7 @@ public class HWMap extends Project{
         backLeftDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         RslideMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         LslideMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        RelbowMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
 //        slideMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 //        camera = hwMap.get(WebcamName.class, "webcam");
