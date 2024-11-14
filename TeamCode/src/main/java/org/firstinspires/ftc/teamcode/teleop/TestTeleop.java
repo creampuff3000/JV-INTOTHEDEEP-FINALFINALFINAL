@@ -74,8 +74,37 @@ public class TestTeleop extends LinearOpMode {
             }
 
             if (gamepad2.y == true) {
-                robot.RelbowMotor.setPower(1);
+                robot.RelbowMotor.setPower(-0.5);
                 robot.RelbowMotor.setTargetPosition(0);
+            }
+
+            if (gamepad2.a == true) {
+                int rVal = robot.RelbowMotor.getCurrentPosition();
+                telemetry.addLine("Pos: " + rVal);
+                telemetry.update();
+                int diff1 = 100 - rVal;
+                if (rVal > 100){
+                    robot.RelbowMotor.setTargetPosition(rVal - Math.abs(diff1));
+                    robot.RelbowMotor.setPower(0.5);
+                    robot.RelbowMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    while (robot.RelbowMotor.isBusy()) {
+
+                    }
+                    robot.RelbowMotor.setPower(0.2);
+                    robot.RelbowMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+                }
+                if (rVal < 100){
+                    robot.RelbowMotor.setTargetPosition(rVal + Math.abs(diff1));
+                    robot.RelbowMotor.setPower(0.5);
+                    robot.RelbowMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    while (robot.RelbowMotor.isBusy()) {
+
+                    }
+                    robot.RelbowMotor.setPower(0.2);
+                    robot.RelbowMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+                }
+                telemetry.addLine("Lift encoder right side: " + robot.RelbowMotor.getCurrentPosition());
+                telemetry.update();
             }
 //            if (gamepad2.y == true) {
 //                int rVal = robot.RelbowMotor.getCurrentPosition();
@@ -90,34 +119,6 @@ public class TestTeleop extends LinearOpMode {
 //                telemetry.addLine("Lift encoder right side: " + robot.RelbowMotor.getCurrentPosition());
 //                telemetry.update();
 //            }
-            if (gamepad2.a == true) {
-                int rVal = robot.RelbowMotor.getCurrentPosition();
-                telemetry.addLine("Pos: " + rVal);
-                telemetry.update();
-                int diff1 = 100 - rVal;
-                if (rVal > 100){
-                    robot.RelbowMotor.setTargetPosition(rVal - Math.abs(diff1));
-                    robot.RelbowMotor.setPower(1);
-                    robot.RelbowMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    while (robot.RelbowMotor.isBusy()) {
-
-                    }
-                    robot.RelbowMotor.setPower(0);
-                    robot.RelbowMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-                }
-                if (rVal < 100){
-                    robot.RelbowMotor.setTargetPosition(rVal + Math.abs(diff1));
-                    robot.RelbowMotor.setPower(1);
-                    robot.RelbowMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    while (robot.RelbowMotor.isBusy()) {
-
-                    }
-                    robot.RelbowMotor.setPower(0);
-                    robot.RelbowMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-                }
-                telemetry.addLine("Lift encoder right side: " + robot.RelbowMotor.getCurrentPosition());
-                telemetry.update();
-            }
 //            if (gamepad2.y == true) {
 //                int rVal = robot.slideMotor.getCurrentPosition();
 //                int diff1 = 2800 - rVal;
