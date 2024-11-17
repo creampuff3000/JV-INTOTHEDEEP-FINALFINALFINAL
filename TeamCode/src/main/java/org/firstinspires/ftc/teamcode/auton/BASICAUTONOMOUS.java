@@ -95,13 +95,19 @@ public class BASICAUTONOMOUS extends LinearOpMode {
         waitForStart(); //wait for play button to be pressed
 
         if (Alliance == Parking.rBlue) {
-            tile(1.5);
-            specimen("high");
+//            strafeLeft(0.1);
+            tile(0.85);
+            slide("high", 1);
+            specimen();
+//            tile(1.5);
+//            specimen("high");
 
         }
         if (Alliance == Parking.rRed) {
-            tile(1.5);
-            specimen("high");
+            strafeLeft(0.1);
+            tile(1.2);
+//            tile(1.5);
+//            specimen("high");
         }
 
         if (Alliance == Parking.lRed) {
@@ -174,19 +180,49 @@ public class BASICAUTONOMOUS extends LinearOpMode {
         robot.backRightDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         robot.backLeftDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
+    public void slowTile(double tileNum)
+    {
+        int fright = robot.frontRightDrive.getCurrentPosition();
+        int fleft = robot.frontLeftDrive.getCurrentPosition();
+        int bright = robot.backRightDrive.getCurrentPosition();
+        int bleft = robot.backLeftDrive.getCurrentPosition();
+        robot.frontRightDrive.setTargetPosition((int)(fright + 1000 * tileNum));
+        robot.frontLeftDrive.setTargetPosition((int)(fleft + 1000 * tileNum));
+        robot.backRightDrive.setTargetPosition((int)(bright + 1000 * tileNum));
+        robot.backLeftDrive.setTargetPosition((int)(bleft + 1000 * tileNum));
+        robot.frontRightDrive.setPower(0.2);
+        robot.frontLeftDrive.setPower(0.2);
+        robot.backRightDrive.setPower(0.2);
+        robot.backLeftDrive.setPower(0.2);
+        robot.frontRightDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        robot.frontLeftDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        robot.backRightDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        robot.backLeftDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        while (robot.backLeftDrive.isBusy() && robot.backRightDrive.isBusy() && robot.frontLeftDrive.isBusy() && robot.frontRightDrive.isBusy()) {
+
+        }
+        robot.backRightDrive.setPower(0);
+        robot.backLeftDrive.setPower(0);
+        robot.frontRightDrive.setPower(0);
+        robot.frontLeftDrive.setPower(0);
+        robot.frontRightDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        robot.frontLeftDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        robot.backRightDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        robot.backLeftDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+    }
     public void tile(double tileNum)
     {
         int fright = robot.frontRightDrive.getCurrentPosition();
         int fleft = robot.frontLeftDrive.getCurrentPosition();
         int bright = robot.backRightDrive.getCurrentPosition();
         int bleft = robot.backLeftDrive.getCurrentPosition();
-        robot.frontRightDrive.setTargetPosition((int)(fright + 1350.846 * tileNum));
-        robot.frontLeftDrive.setTargetPosition((int)(fleft + 1350.846 * tileNum));
-        robot.backRightDrive.setTargetPosition((int)(bright + 1350.846 * tileNum));
-        robot.backLeftDrive.setTargetPosition((int)(bleft + 1350.846 * tileNum));
-        robot.frontRightDrive.setPower(1);
+        robot.frontRightDrive.setTargetPosition((int)(fright + 1000 * tileNum));
+        robot.frontLeftDrive.setTargetPosition((int)(fleft + 1000 * tileNum));
+        robot.backRightDrive.setTargetPosition((int)(bright + 1000 * tileNum));
+        robot.backLeftDrive.setTargetPosition((int)(bleft + 1000 * tileNum));
+        robot.frontRightDrive.setPower(0.9);
         robot.frontLeftDrive.setPower(1);
-        robot.backRightDrive.setPower(1);
+        robot.backRightDrive.setPower(0.9);
         robot.backLeftDrive.setPower(1);
         robot.frontRightDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         robot.frontLeftDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -204,20 +240,20 @@ public class BASICAUTONOMOUS extends LinearOpMode {
         robot.backRightDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         robot.backLeftDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
-    public void specimen(String height){
+    public void slide(String height, Integer dir){
         double slidePos1 = robot.LslideMotor.getCurrentPosition();
         double slidePos2 = robot.RslideMotor.getCurrentPosition();
-        if (height == "low"){
-            robot.LslideMotor.setTargetPosition(10);
-            robot.RslideMotor.setTargetPosition(10);
+        if (height == "low") {
+            robot.LslideMotor.setTargetPosition(dir * 10);
+            robot.RslideMotor.setTargetPosition(dir * 10);
         }
         else{
-            robot.LslideMotor.setTargetPosition(20);
-            robot.RslideMotor.setTargetPosition(20);
+            robot.LslideMotor.setTargetPosition(dir * 6000);
+            robot.RslideMotor.setTargetPosition(dir * 6000);
         }
 
-        robot.LslideMotor.setPower(1);
-        robot.RslideMotor.setPower(1);
+        robot.LslideMotor.setPower(1 * dir);
+        robot.RslideMotor.setPower(1 * dir);
         robot.LslideMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         robot.RslideMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         while (robot.LslideMotor.isBusy() && robot.RslideMotor.isBusy() ) {
@@ -228,6 +264,18 @@ public class BASICAUTONOMOUS extends LinearOpMode {
         robot.RslideMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         robot.LslideMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
+    public void specimen(){
+        robot.wristServo.setPosition(1);
+        sleep(1000);
+        robot.clawServo.setPosition(1);
+        sleep(1000);
+        robot.clawServo.setPosition(0);
+        sleep(1000);
+        tile(-0.2);
+        sleep(1000);
+        robot.wristServo.setPosition(0);
+    }
+
 
 }
 

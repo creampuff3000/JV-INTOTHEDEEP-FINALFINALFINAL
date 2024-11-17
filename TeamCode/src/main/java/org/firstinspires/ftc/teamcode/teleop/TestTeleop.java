@@ -27,6 +27,7 @@ public class TestTeleop extends LinearOpMode {
             double x = gamepad1.right_stick_x * 1.1; // Counteract imperfect strafing (suspicious)
             double rx = gamepad1.left_stick_x;
 
+
             // Denominator is the largest motor power (absolute value) or 1jh
             // This ensures all the powers maintain the same ratio, but only whenoiajhsdouhjouhjoijqoushdouahsduih
             // at least one is out of the range [-1, 1]
@@ -53,18 +54,18 @@ public class TestTeleop extends LinearOpMode {
 //                robot.RelbowMotor.setPower(0);
 //            }
 
-            if (robot.clawServo.getPosition() == 1 && gamepad2.x == true) {
+            if (robot.clawServo.getPosition() == 1 && gamepad1.right_bumper == true) {
                 robot.clawServo.setPosition(0);
                 sleep(500);
-            } else if (robot.clawServo.getPosition() == 0 && gamepad2.x == true) {
+            } else if (robot.clawServo.getPosition() == 0 && gamepad1.right_bumper == true) {
                 robot.clawServo.setPosition(1);
                 sleep(500);
             }
-            if (gamepad2.dpad_up == true) {
+            if (gamepad1.dpad_up == true) {
                 robot.LslideMotor.setPower(1);
                 robot.RslideMotor.setPower(1);
 
-            } else if (gamepad2.dpad_down == true) {
+            } else if (gamepad1.dpad_down == true) {
                 robot.LslideMotor.setPower(-1);
                 robot.RslideMotor.setPower(-1);
 
@@ -73,39 +74,47 @@ public class TestTeleop extends LinearOpMode {
                 robot.LslideMotor.setPower(0);
             }
 
-            if (gamepad2.y == true) {
-                robot.RelbowMotor.setPower(-0.5);
-                robot.RelbowMotor.setTargetPosition(0);
+            if (gamepad1.y == true) {
+                robot.RelbowMotor.setPower(0.1);
+                robot.LelbowMotor.setPower(0.1);
+            }
+            if (gamepad1.a == true){
+                robot.RelbowMotor.setPower(-0.35);
+                robot.LelbowMotor.setPower(-0.35);
+            }
+            else{
+                robot.RelbowMotor.setPower(0);
+                robot.RelbowMotor.setPower(0);
             }
 
-            if (gamepad2.a == true) {
-                int rVal = robot.RelbowMotor.getCurrentPosition();
-                telemetry.addLine("mPos: " + rVal);
-                telemetry.update();
-                int diff1 = 100 - rVal;
-                if (rVal > 100){
-                    robot.RelbowMotor.setTargetPosition(rVal - Math.abs(diff1));
-                    robot.RelbowMotor.setPower(0.5);
-                    robot.RelbowMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    while (robot.RelbowMotor.isBusy()) {
-
-                    }
-                    robot.RelbowMotor.setPower(0.2);
-                    robot.RelbowMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-                }
-                if (rVal < 100){
-                    robot.RelbowMotor.setTargetPosition(rVal + Math.abs(diff1));
-                    robot.RelbowMotor.setPower(0.5);
-                    robot.RelbowMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    while (robot.RelbowMotor.isBusy()) {
-
-                    }
-                    robot.RelbowMotor.setPower(0.2);
-                    robot.RelbowMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-                }
-                telemetry.addLine("Lift encoder right side: " + robot.RelbowMotor.getCurrentPosition());
-                telemetry.update();
-            }
+//            if (gamepad2.a == true) {
+//                int rVal = robot.RelbowMotor.getCurrentPosition();
+//                telemetry.addLine("Pos: " + rVal);
+//                telemetry.update();
+//                int diff1 = 150 - rVal;
+//                if (rVal > 150){
+//                    robot.RelbowMotor.setTargetPosition(rVal - Math.abs(diff1));
+//                    robot.RelbowMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+//                    robot.RelbowMotor.setPower(0.4);
+//                    while (robot.RelbowMotor.isBusy()) {
+//
+//                    }
+//                    robot.RelbowMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+//                    robot.RelbowMotor.setPower(0.1);
+//                }
+//                if (rVal < 150){
+//                    robot.RelbowMotor.setTargetPosition(rVal + Math.abs(diff1));
+//                    robot.RelbowMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+//                    robot.RelbowMotor.setPower(0.4);
+//                    while (robot.RelbowMotor.isBusy()) {
+//
+//                    }
+//                    robot.RelbowMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+//                    robot.RelbowMotor.setPower(0.1);
+//                }
+//                telemetry.addLine("Lift encoder right side: " + robot.RelbowMotor.getCurrentPosition());
+//                telemetry.update();
+//            }
 //            if (gamepad2.y == true) {
 //                int rVal = robot.RelbowMotor.getCurrentPosition();
 //                int diff1 = 1200 - rVal;
@@ -146,10 +155,10 @@ public class TestTeleop extends LinearOpMode {
 //                telemetry.update();
 //            }
 
-            if (robot.wristServo.getPosition() == 1 && gamepad2.b == true){
+            if (robot.wristServo.getPosition() == 1 && gamepad1.b == true){
                 robot.wristServo.setPosition(0);
                 sleep(500);
-            } else if (robot.wristServo.getPosition() == 0 && gamepad2.b == true){
+            } else if (robot.wristServo.getPosition() == 0 && gamepad1.b == true){
                 robot.wristServo.setPosition(1);
                 sleep(500);
             }
