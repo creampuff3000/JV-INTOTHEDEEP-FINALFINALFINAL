@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.hardware.Gamepad;
 
 import org.firstinspires.ftc.teamcode.Projects.HWMap;
 
-@Autonomous(name = "why dont you guys just use xbox controllers")
+@Autonomous(name = "Mountain Dew Baja Blast Tropical Lime Soda Pop")
 
 public class BASICAUTONOMOUS extends LinearOpMode {
     enum Parking {
@@ -216,14 +216,14 @@ public class BASICAUTONOMOUS extends LinearOpMode {
         int fleft = robot.frontLeftDrive.getCurrentPosition();
         int bright = robot.backRightDrive.getCurrentPosition();
         int bleft = robot.backLeftDrive.getCurrentPosition();
-        robot.frontRightDrive.setTargetPosition((int)(fright + 1000 * tileNum));
-        robot.frontLeftDrive.setTargetPosition((int)(fleft + 1000 * tileNum));
-        robot.backRightDrive.setTargetPosition((int)(bright + 1000 * tileNum));
-        robot.backLeftDrive.setTargetPosition((int)(bleft + 1000 * tileNum));
-        robot.frontRightDrive.setPower(0.9);
-        robot.frontLeftDrive.setPower(1);
-        robot.backRightDrive.setPower(0.9);
-        robot.backLeftDrive.setPower(1);
+        robot.frontRightDrive.setTargetPosition((int)(fright + 500 * tileNum));
+        robot.frontLeftDrive.setTargetPosition((int)(fleft + 800 * tileNum));
+        robot.backRightDrive.setTargetPosition((int)(bright + 500 * tileNum));
+        robot.backLeftDrive.setTargetPosition((int)(bleft + 800 * tileNum));
+        robot.frontRightDrive.setPower(0.3);
+        robot.frontLeftDrive.setPower(0.5);
+        robot.backRightDrive.setPower(0.3);
+        robot.backLeftDrive.setPower(0.5);
         robot.frontRightDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         robot.frontLeftDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         robot.backRightDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);

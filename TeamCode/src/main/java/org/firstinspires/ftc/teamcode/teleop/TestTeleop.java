@@ -16,6 +16,7 @@ public class TestTeleop extends LinearOpMode {
         waitForStart();
         boolean isSpinning = false;
         double speed = 1;
+        boolean open = false;
         boolean slowMode = false;
         boolean slowModeToggle = false;
 
@@ -54,11 +55,11 @@ public class TestTeleop extends LinearOpMode {
 //                robot.RelbowMotor.setPower(0);
 //            }
 
-            if (robot.clawServo.getPosition() == 1 && gamepad1.right_bumper == true) {
+            if (open == true && gamepad1.right_bumper == true) {
                 robot.clawServo.setPosition(0);
                 sleep(500);
-            } else if (robot.clawServo.getPosition() == 0 && gamepad1.right_bumper == true) {
-                robot.clawServo.setPosition(1);
+            } else if (open == false && gamepad1.right_bumper == true) {
+                robot.clawServo.setPosition(0.6);
                 sleep(500);
             }
             if (gamepad1.dpad_up == true) {

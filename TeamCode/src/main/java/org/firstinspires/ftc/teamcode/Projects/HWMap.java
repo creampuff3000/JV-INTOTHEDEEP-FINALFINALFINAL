@@ -35,8 +35,8 @@ public class HWMap extends Project{
         frontRightDrive.setDirection(DcMotor.Direction.REVERSE);
         backLeftDrive.setDirection(DcMotor.Direction.FORWARD);
         backRightDrive.setDirection(DcMotor.Direction.REVERSE);
-        RslideMotor.setDirection(DcMotor.Direction.FORWARD);
-        LslideMotor.setDirection(DcMotor.Direction.REVERSE);
+        RslideMotor.setDirection(DcMotor.Direction.REVERSE);
+        LslideMotor.setDirection(DcMotor.Direction.FORWARD);
         RelbowMotor.setDirection(DcMotor.Direction.REVERSE);
         LelbowMotor.setDirection(DcMotor.Direction.FORWARD);
 //        change prob
