@@ -76,15 +76,12 @@ public class TestTeleop extends LinearOpMode {
             }
 
             if (gamepad1.y == true) {
-                robot.RelbowMotor.setPower(0.1);
-                robot.LelbowMotor.setPower(0.1);
+                robot.RelbowMotor.setPower(1);
             }
             if (gamepad1.a == true){
                 robot.RelbowMotor.setPower(-0.35);
-                robot.LelbowMotor.setPower(-0.35);
             }
             else{
-                robot.RelbowMotor.setPower(0);
                 robot.RelbowMotor.setPower(0);
             }
 

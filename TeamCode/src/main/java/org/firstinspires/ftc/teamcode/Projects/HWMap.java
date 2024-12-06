@@ -15,7 +15,6 @@ public class HWMap extends Project{
     public DcMotor LslideMotor = null;
     public Servo clawServo = null;
     public Servo wristServo = null;
-    public DcMotor LelbowMotor = null;
 
     @Override
     public void init(HardwareMap hwMap) {
@@ -30,7 +29,6 @@ public class HWMap extends Project{
         clawServo = hwMap.get(Servo.class, "clawServo");
         wristServo = hwMap.get(Servo.class, "wristServo");
         RelbowMotor = hwMap.get(DcMotor.class, "RelbowMotor");
-        LelbowMotor = hwMap.get(DcMotor.class, "LelbowMotor");
         frontLeftDrive.setDirection(DcMotor.Direction.FORWARD);
         frontRightDrive.setDirection(DcMotor.Direction.REVERSE);
         backLeftDrive.setDirection(DcMotor.Direction.FORWARD);
@@ -38,7 +36,6 @@ public class HWMap extends Project{
         RslideMotor.setDirection(DcMotor.Direction.REVERSE);
         LslideMotor.setDirection(DcMotor.Direction.FORWARD);
         RelbowMotor.setDirection(DcMotor.Direction.REVERSE);
-        LelbowMotor.setDirection(DcMotor.Direction.FORWARD);
 //        change prob
 //        also change prob
         frontRightDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
@@ -48,7 +45,6 @@ public class HWMap extends Project{
         RslideMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         LslideMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         RelbowMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        LelbowMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
 //        slideMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         frontRightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -58,7 +54,6 @@ public class HWMap extends Project{
         RslideMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         LslideMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         RelbowMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        LelbowMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
 //        slideMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 //        camera = hwMap.get(WebcamName.class, "webcam");
@@ -71,7 +66,7 @@ public class HWMap extends Project{
         backLeftDrive.setPower(0);
         RslideMotor.setPower(0);
         LslideMotor.setPower(0);
-        RslideMotor.setPower(0);
+        RelbowMotor.setPower(0);
 
 
     }
