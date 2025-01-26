@@ -3,11 +3,15 @@ package org.firstinspires.ftc.teamcode.auton;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.hardware.rev.Rev2mDistanceSensor;
 import com.qualcomm.robotcore.hardware.Gamepad;
+import com.qualcomm.robotcore.hardware.DistanceSensor;
+import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
+
 
 import org.firstinspires.ftc.teamcode.Projects.HWMap;
 
-@Autonomous(name = "Mountain Dew Baja Blast Tropical Lime Soda Pop")
+@Autonomous(name = "CurrentAutonomous")
 
 public class BASICAUTONOMOUS extends LinearOpMode {
     enum Parking {
@@ -96,23 +100,38 @@ public class BASICAUTONOMOUS extends LinearOpMode {
 
         if (Alliance == Parking.rBlue) {
 //            strafeLeft(0.1);
-            tile(0.85);
-            slide("high", 1);
-            specimen();
+            tile(1.7);
+            robot.clawServo.setPosition(0.75);
+            sleep(30000);
 //            tile(1.5);
 //            specimen("high");
 
         }
         if (Alliance == Parking.rRed) {
-            strafeLeft(0.1);
             tile(1.2);
+            slide("high", 1);
+            sleep(5000);
+            robot.RelbowMotor.setPower(-0.83);
+            sleep(210);
+            robot.RelbowMotor.setPower(0);
+            sleep(5000);
+            robot.clawServo.setPosition(0.4);
+            tile(-0.3);
+//            specimen();
+//            strafeLeft(0.1);
+//            tile(1.2);
 //            tile(1.5);
 //            specimen("high");
+
         }
 
         if (Alliance == Parking.lRed) {
-//            strafeRight(0.1);
-//            tile(1.6);
+            while (robot.DistSensor.getDistance(DistanceUnit.CM) > 3){
+                robot.frontRightDrive.setPower(0.2);
+                robot.frontLeftDrive.setPower(0.2);
+                robot.backRightDrive.setPower(0.2);
+                robot.backLeftDrive.setPower(0.2);
+            }
         }
 
         if (Alliance == Parking.lBlue) {
@@ -160,10 +179,10 @@ public class BASICAUTONOMOUS extends LinearOpMode {
         robot.frontRightDrive.setTargetPosition((int) (fright + 1300 * tileNum));;
         robot.backLeftDrive.setTargetPosition((int) (bleft + 1300 * tileNum));
         robot.backRightDrive.setTargetPosition((int)(bright - 1300 * tileNum));
-        robot.frontLeftDrive.setPower(-0.7);
-        robot.frontRightDrive.setPower(0.7);
-        robot.backRightDrive.setPower(-0.7);
-        robot.backLeftDrive.setPower(0.7);
+        robot.frontLeftDrive.setPower(-0.3);
+        robot.frontRightDrive.setPower(0.3);
+        robot.backRightDrive.setPower(-0.3);
+        robot.backLeftDrive.setPower(0.3);
         robot.frontRightDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         robot.frontLeftDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         robot.backRightDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -216,14 +235,14 @@ public class BASICAUTONOMOUS extends LinearOpMode {
         int fleft = robot.frontLeftDrive.getCurrentPosition();
         int bright = robot.backRightDrive.getCurrentPosition();
         int bleft = robot.backLeftDrive.getCurrentPosition();
-        robot.frontRightDrive.setTargetPosition((int)(fright + 500 * tileNum));
+        robot.frontRightDrive.setTargetPosition((int)(fright + 760 * tileNum));
         robot.frontLeftDrive.setTargetPosition((int)(fleft + 800 * tileNum));
-        robot.backRightDrive.setTargetPosition((int)(bright + 500 * tileNum));
+        robot.backRightDrive.setTargetPosition((int)(bright + 760 * tileNum));
         robot.backLeftDrive.setTargetPosition((int)(bleft + 800 * tileNum));
-        robot.frontRightDrive.setPower(0.3);
-        robot.frontLeftDrive.setPower(0.5);
-        robot.backRightDrive.setPower(0.3);
-        robot.backLeftDrive.setPower(0.5);
+        robot.frontRightDrive.setPower(0.7);
+        robot.frontLeftDrive.setPower(0.9);
+        robot.backRightDrive.setPower(0.7);
+        robot.backLeftDrive.setPower(0.9);
         robot.frontRightDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         robot.frontLeftDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         robot.backRightDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -240,20 +259,18 @@ public class BASICAUTONOMOUS extends LinearOpMode {
         robot.backRightDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         robot.backLeftDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
-    public void slide(String height, Integer dir){
-        double slidePos1 = robot.LslideMotor.getCurrentPosition();
-        double slidePos2 = robot.RslideMotor.getCurrentPosition();
+    public void slide(String height, Integer pwr){
         if (height == "low") {
-            robot.LslideMotor.setTargetPosition(dir * 10);
-            robot.RslideMotor.setTargetPosition(dir * 10);
+            robot.LslideMotor.setTargetPosition(pwr * 10);
+            robot.RslideMotor.setTargetPosition(pwr * 10);
         }
         else{
-            robot.LslideMotor.setTargetPosition(dir * 6000);
-            robot.RslideMotor.setTargetPosition(dir * 6000);
+            robot.LslideMotor.setTargetPosition(pwr * 3500);
+            robot.RslideMotor.setTargetPosition(pwr * 3500);
         }
 
-        robot.LslideMotor.setPower(1 * dir);
-        robot.RslideMotor.setPower(1 * dir);
+        robot.LslideMotor.setPower(1 * pwr);
+        robot.RslideMotor.setPower(1 * pwr);
         robot.LslideMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         robot.RslideMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         while (robot.LslideMotor.isBusy() && robot.RslideMotor.isBusy() ) {
@@ -265,15 +282,13 @@ public class BASICAUTONOMOUS extends LinearOpMode {
         robot.LslideMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
     public void specimen(){
-        robot.wristServo.setPosition(1);
+        tile(0.1);
+        robot.RelbowMotor.setPower(0.23);
+        sleep(500);
+//        robot.wristServo.setPosition(1);
         sleep(1000);
-        robot.clawServo.setPosition(1);
+        tile(-0.3);
         sleep(1000);
-        robot.clawServo.setPosition(0);
-        sleep(1000);
-        tile(-0.2);
-        sleep(1000);
-        robot.wristServo.setPosition(0);
     }
 
 

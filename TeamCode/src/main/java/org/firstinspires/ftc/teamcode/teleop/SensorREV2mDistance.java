@@ -30,39 +30,40 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR
 TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-package org.firstinspires.ftc.robotcontroller.external.samples;
+package org.firstinspires.ftc.teamcode.teleop;
 
 import com.qualcomm.hardware.rev.Rev2mDistanceSensor;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DistanceSensor;
+
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
-/*
- * This OpMode illustrates how to use the REV Robotics 2M Distance Sensor.
+/**
+ * {@link SensorREV2mDistance} illustrates how to use the REV Robotics
+ * Time-of-Flight Range Sensor.
  *
- * The OpMode assumes that the sensor is configured with a name of "sensor_distance".
+ * The op mode assumes that the range sensor is configured with a name of "sensor_range".
  *
  * Use Android Studio to Copy this Class, and Paste it into your team's code folder with a new name.
- * Remove or comment out the @Disabled line to add this OpMode to the Driver Station OpMode list
+ * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  *
- * See the sensor's product page: https://www.revrobotics.com/rev-31-1505/
+ * @see <a href="http://revrobotics.com">REV Robotics Web Page</a>
  */
 @TeleOp(name = "Sensor: REV2mDistance", group = "Sensor")
-@Disabled
+//@Disabled
 public class SensorREV2mDistance extends LinearOpMode {
 
-    private DistanceSensor sensorDistance;
+    private DistanceSensor Sensor;
 
     @Override
     public void runOpMode() {
         // you can use this as a regular DistanceSensor.
-        sensorDistance = hardwareMap.get(DistanceSensor.class, "sensor_distance");
+        Sensor = hardwareMap.get(DistanceSensor.class, "Sensor");
 
         // you can also cast this to a Rev2mDistanceSensor if you want to use added
         // methods associated with the Rev2mDistanceSensor class.
-        Rev2mDistanceSensor sensorTimeOfFlight = (Rev2mDistanceSensor) sensorDistance;
+        Rev2mDistanceSensor sensorTimeOfFlight = (Rev2mDistanceSensor)Sensor;
 
         telemetry.addData(">>", "Press start to continue");
         telemetry.update();
@@ -70,11 +71,11 @@ public class SensorREV2mDistance extends LinearOpMode {
         waitForStart();
         while(opModeIsActive()) {
             // generic DistanceSensor methods.
-            telemetry.addData("deviceName", sensorDistance.getDeviceName() );
-            telemetry.addData("range", String.format("%.01f mm", sensorDistance.getDistance(DistanceUnit.MM)));
-            telemetry.addData("range", String.format("%.01f cm", sensorDistance.getDistance(DistanceUnit.CM)));
-            telemetry.addData("range", String.format("%.01f m", sensorDistance.getDistance(DistanceUnit.METER)));
-            telemetry.addData("range", String.format("%.01f in", sensorDistance.getDistance(DistanceUnit.INCH)));
+            telemetry.addData("deviceName",Sensor.getDeviceName() );
+            telemetry.addData("range", String.format("%.01f mm", Sensor.getDistance(DistanceUnit.MM)));
+            telemetry.addData("range", String.format("%.01f cm", Sensor.getDistance(DistanceUnit.CM)));
+            telemetry.addData("range", String.format("%.01f m", Sensor.getDistance(DistanceUnit.METER)));
+            telemetry.addData("range", String.format("%.01f in", Sensor.getDistance(DistanceUnit.INCH)));
 
             // Rev2mDistanceSensor specific methods.
             telemetry.addData("ID", String.format("%x", sensorTimeOfFlight.getModelID()));

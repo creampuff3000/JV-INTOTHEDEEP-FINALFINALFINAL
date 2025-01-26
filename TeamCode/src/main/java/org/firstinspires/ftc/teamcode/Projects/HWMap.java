@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.Projects;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.DistanceSensor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
@@ -14,6 +15,7 @@ public class HWMap extends Project{
     public DcMotor RslideMotor = null;
     public DcMotor LslideMotor = null;
     public Servo clawServo = null;
+    public DistanceSensor DistSensor = null;
 //    public Servo wristServo = null;
 
     @Override
@@ -26,6 +28,7 @@ public class HWMap extends Project{
         backRightDrive = hwMap.get(DcMotor.class, "backRightDrive");
         RslideMotor = hwMap.get(DcMotor.class, "RslideMotor");
         LslideMotor = hwMap.get(DcMotor.class, "LslideMotor");
+        DistSensor = hwMap.get(DistanceSensor.class, "DistSensor");
         clawServo = hwMap.servo.get("clawServo");
 //        wristServo = hwMap.get(Servo.class, "wristServo");
         RelbowMotor = hwMap.get(DcMotor.class, "RelbowMotor");
