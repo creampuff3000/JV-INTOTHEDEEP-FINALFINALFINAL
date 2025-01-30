@@ -77,7 +77,7 @@ public class TestTeleop extends LinearOpMode {
             }
 
             // elbow code (change encoder counts)
-          if (gamepad1.a == true) {
+          if (gamepad1.x == true) {
               robot.RelbowMotor.setTargetPosition(0);
               robot.RelbowMotor.setPower(1);
           }
@@ -186,13 +186,13 @@ public class TestTeleop extends LinearOpMode {
 //                telemetry.update();
 //            }
 
-//            if (robot.wristServo.getPosition() == 1 && gamepad1.b == true){
-//                robot.wristServo.setPosition(0);
-//                sleep(500);
-//            } else if (robot.wristServo.getPosition() == 0 && gamepad1.b == true){
-//                robot.wristServo.setPosition(1);
-//                sleep(500);
-//            }
+            if (robot.wristServo.getPosition() == 1 && gamepad1.b == true){
+                robot.wristServo.setPosition(0);
+                sleep(500);
+            } else if (robot.wristServo.getPosition() == 0 && gamepad1.b == true){
+                robot.wristServo.setPosition(1);
+                sleep(500);
+            }
                 }
             }
         }

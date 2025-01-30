@@ -16,7 +16,7 @@ public class HWMap extends Project{
     public DcMotor LslideMotor = null;
     public Servo clawServo = null;
     public DistanceSensor DistSensor = null;
-//    public Servo wristServo = null;
+    public Servo wristServo = null;
 
     @Override
     public void init(HardwareMap hwMap) {
@@ -30,7 +30,7 @@ public class HWMap extends Project{
         LslideMotor = hwMap.get(DcMotor.class, "LslideMotor");
         DistSensor = hwMap.get(DistanceSensor.class, "DistSensor");
         clawServo = hwMap.servo.get("clawServo");
-//        wristServo = hwMap.get(Servo.class, "wristServo");
+        wristServo = hwMap.get(Servo.class, "wristServo");
         RelbowMotor = hwMap.get(DcMotor.class, "RelbowMotor");
         frontLeftDrive.setDirection(DcMotor.Direction.FORWARD);
         frontRightDrive.setDirection(DcMotor.Direction.REVERSE);
@@ -71,5 +71,6 @@ public class HWMap extends Project{
         LslideMotor.setPower(0);
         RelbowMotor.setPower(0);
         clawServo.setPosition(0.74);
+        wristServo.setPosition(1);
     }
 }
