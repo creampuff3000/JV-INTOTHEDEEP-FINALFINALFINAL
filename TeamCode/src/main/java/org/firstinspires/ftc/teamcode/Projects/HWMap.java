@@ -16,7 +16,7 @@ public class HWMap extends Project{
     public DcMotor LslideMotor = null;
     public Servo clawServo = null;
     public DistanceSensor DistSensor = null;
-    public Servo wristServo = null;
+//    public Servo wristServo = null;
 
     @Override
     public void init(HardwareMap hwMap) {
@@ -29,8 +29,8 @@ public class HWMap extends Project{
         RslideMotor = hwMap.get(DcMotor.class, "RslideMotor");
         LslideMotor = hwMap.get(DcMotor.class, "LslideMotor");
         DistSensor = hwMap.get(DistanceSensor.class, "DistSensor");
-        clawServo = hwMap.servo.get("clawServo");
-        wristServo = hwMap.get(Servo.class, "wristServo");
+        clawServo = hwMap.get(Servo.class, "clawServo");
+//        wristServo = hwMap.get(Servo.class, "wristServo");
         RelbowMotor = hwMap.get(DcMotor.class, "RelbowMotor");
         frontLeftDrive.setDirection(DcMotor.Direction.FORWARD);
         frontRightDrive.setDirection(DcMotor.Direction.REVERSE);
@@ -47,7 +47,7 @@ public class HWMap extends Project{
         backLeftDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         RslideMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         LslideMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        RelbowMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+//        RelbowMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
 //        slideMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         frontRightDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -69,8 +69,8 @@ public class HWMap extends Project{
         backLeftDrive.setPower(0);
         RslideMotor.setPower(0);
         LslideMotor.setPower(0);
-        RelbowMotor.setPower(0);
-        clawServo.setPosition(0.74);
-        wristServo.setPosition(1);
+        RelbowMotor.setPower(1);
+        clawServo.setPosition(0.40);
+//        wristServo.setPosition(1);
     }
 }

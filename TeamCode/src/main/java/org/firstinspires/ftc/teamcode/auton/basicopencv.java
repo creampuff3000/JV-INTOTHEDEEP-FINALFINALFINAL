@@ -22,7 +22,7 @@ public class basicopencv extends LinearOpMode {
         BRed,
         FRed,
     }
-    OpenCvCamera webcam;
+//    OpenCvCamera webcam;
     Gamepad currentGamepad1 = new Gamepad();
     Gamepad previousGamepad1 = new Gamepad();
     public HWMap robot = new HWMap();
@@ -37,7 +37,7 @@ public class basicopencv extends LinearOpMode {
         robot.init(hardwareMap);
         Parking Alliance = Parking.FBlue;
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName()); // init the camera?
-        webcam = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class, "webcam"), cameraMonitorViewId); // init the camera?
+//        webcam = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class, "webcam"), cameraMonitorViewId); // init the camera?
 
         robot.frontRightDrive.setTargetPosition(0);
         robot.frontLeftDrive.setTargetPosition(0);
@@ -127,7 +127,7 @@ public class basicopencv extends LinearOpMode {
             sleep(500);
 
             if (robotPos == 1 || robotPos == 2) {
-                webcam.setPipeline(BluePropDetectionPipeline); // setting the pipeline
+//                webcam.setPipeline(BluePropDetectionPipeline); // setting the pipeline
                 BluePropLocation elementLocation = BluePropDetectionPipeline.getPropLocation(); // getting the prop location into a variable elementLocation
                 if (elementLocation == BluePropLocation.RIGHT) {
                     telemetry.addLine("right");
@@ -157,7 +157,7 @@ public class basicopencv extends LinearOpMode {
                 }
             }
             if (robotPos == 3 || robotPos == 4) {
-                webcam.setPipeline(RedPropDetectionPipeline); // setting the pipeline
+//                webcam.setPipeline(RedPropDetectionPipeline); // setting the pipeline
                 RedPropLocation elementLocation = RedPropDetectionPipeline.getPropLocation(); // getting the prop location into a variable elementLocation
                 if (elementLocation == RedPropLocation.RIGHT) {
                     telemetry.addLine("right");

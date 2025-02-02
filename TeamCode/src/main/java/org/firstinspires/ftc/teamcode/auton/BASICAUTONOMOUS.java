@@ -126,12 +126,38 @@ public class BASICAUTONOMOUS extends LinearOpMode {
         }
 
         if (Alliance == Parking.lRed) {
-            while (robot.DistSensor.getDistance(DistanceUnit.CM) > 3){
-                robot.frontRightDrive.setPower(0.2);
-                robot.frontLeftDrive.setPower(0.2);
-                robot.backRightDrive.setPower(0.2);
-                robot.backLeftDrive.setPower(0.2);
+            robot.RelbowMotor.setPower(1);
+            sleep(1000);
+            slide("high", 1);
+            sleep(1000);
+            robot.RslideMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            robot.LslideMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            while (robot.DistSensor.getDistance(DistanceUnit.CM) > 13){
+                robot.frontRightDrive.setPower(0.5);
+                robot.frontLeftDrive.setPower(0.5);
+                robot.backRightDrive.setPower(0.5);
+                robot.backLeftDrive.setPower(0.5);
             }
+            robot.frontRightDrive.setPower(0);
+            robot.frontLeftDrive.setPower(0);
+            robot.backRightDrive.setPower(0);
+            robot.backLeftDrive.setPower(0);
+            sleep(1000);
+            robot.RslideMotor.setTargetPosition(robot.RslideMotor.getCurrentPosition() - 2000);
+            robot.LslideMotor.setTargetPosition(robot.LslideMotor.getCurrentPosition() - 2000);
+            robot.RslideMotor.setPower(0.8);
+            robot.LslideMotor.setPower(0.8);
+            robot.LslideMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            robot.RslideMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            while (robot.LslideMotor.isBusy() && robot.RslideMotor.isBusy() ) {
+
+            }
+            robot.RslideMotor.setPower(0);
+            robot.LslideMotor.setPower(0);
+            sleep(1000);
+            robot.clawServo.setPosition(0.4);
+            sleep(1000);
+            tile(-0.5);
         }
 
         if (Alliance == Parking.lBlue) {
@@ -264,9 +290,13 @@ public class BASICAUTONOMOUS extends LinearOpMode {
             robot.LslideMotor.setTargetPosition(pwr * 10);
             robot.RslideMotor.setTargetPosition(pwr * 10);
         }
+        if (height == "down"){
+            robot.LslideMotor.setTargetPosition(0);
+            robot.RslideMotor.setTargetPosition(0);
+        }
         else{
-            robot.LslideMotor.setTargetPosition(pwr * 3500);
-            robot.RslideMotor.setTargetPosition(pwr * 3500);
+            robot.LslideMotor.setTargetPosition(pwr * 1000);
+            robot.RslideMotor.setTargetPosition(pwr * 1000);
         }
 
         robot.LslideMotor.setPower(1 * pwr);

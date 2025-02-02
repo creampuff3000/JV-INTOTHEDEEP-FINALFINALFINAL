@@ -78,33 +78,36 @@ public class TestTeleop extends LinearOpMode {
 
             // elbow code (change encoder counts)
           if (gamepad1.x == true) {
-              robot.RelbowMotor.setTargetPosition(0);
-              robot.RelbowMotor.setPower(1);
+              robot.RelbowMotor.setPower(0);
           }
           if (gamepad1.y == true) {
                 int rVal = robot.RelbowMotor.getCurrentPosition();
-                int diff1 = 300 - rVal;
-                if (rVal > 300){
+                int diff1 = 150 - rVal;
+                if (rVal > 150){
                     robot.RelbowMotor.setTargetPosition(rVal - Math.abs(diff1));
+                    robot.RelbowMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 }
-                if (rVal < 300){
+                if (rVal < 150){
                     robot.RelbowMotor.setTargetPosition(rVal + Math.abs(diff1));
+                    robot.RelbowMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 }
-              robot.RelbowMotor.setPower(1);
-              telemetry.addLine("Lift encoder right side: " + robot.RelbowMotor.getCurrentPosition());
-                telemetry.update();
+              robot.RelbowMotor.setPower(0.2);
+              telemetry.addLine("lb: " + robot.RelbowMotor.getCurrentPosition());
+              telemetry.update();
             }
           if (gamepad1.a == true){
               int rVal = robot.RelbowMotor.getCurrentPosition();
-              int diff1 = 1000 - rVal;
-              if (rVal > 1000){
+              int diff1 = 500 - rVal;
+              if (rVal > 500){
                   robot.RelbowMotor.setTargetPosition(rVal - Math.abs(diff1));
+                  robot.RelbowMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
               }
-              if (rVal < 1000){
+              if (rVal < 500){
                   robot.RelbowMotor.setTargetPosition(rVal + Math.abs(diff1));
+                  robot.RelbowMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
               }
               robot.RelbowMotor.setPower(1);
-              telemetry.addLine("Lift encoder right side: " + robot.RelbowMotor.getCurrentPosition());
+              telemetry.addLine("lb: " + robot.RelbowMotor.getCurrentPosition());
               telemetry.update();
           }
 //            if (gamepad1.y == true) {
@@ -186,13 +189,13 @@ public class TestTeleop extends LinearOpMode {
 //                telemetry.update();
 //            }
 
-            if (robot.wristServo.getPosition() == 1 && gamepad1.b == true){
-                robot.wristServo.setPosition(0);
-                sleep(500);
-            } else if (robot.wristServo.getPosition() == 0 && gamepad1.b == true){
-                robot.wristServo.setPosition(1);
-                sleep(500);
-            }
+//            if (robot.wristServo.getPosition() == 1 && gamepad1.b == true){
+//                robot.wristServo.setPosition(0);
+//                sleep(500);
+//            } else if (robot.wristServo.getPosition() == 0 && gamepad1.b == true){
+//                robot.wristServo.setPosition(1);
+//                sleep(500);
+//            }
                 }
             }
         }
