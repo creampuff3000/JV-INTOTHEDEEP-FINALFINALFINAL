@@ -99,10 +99,8 @@ public class BASICAUTONOMOUS extends LinearOpMode {
         waitForStart(); //wait for play button to be pressed
 
         if (Alliance == Parking.rBlue) {
-//            strafeLeft(0.1);
+            strafeLeft(0.1);
             tile(1.7);
-            robot.clawServo.setPosition(0.75);
-            sleep(30000);
 //            tile(1.5);
 //            specimen("high");
 
@@ -132,7 +130,7 @@ public class BASICAUTONOMOUS extends LinearOpMode {
             sleep(1000);
             robot.RslideMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             robot.LslideMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            while (robot.DistSensor.getDistance(DistanceUnit.CM) > 13){
+            while (robot.DistSensor.getDistance(DistanceUnit.CM) > 16){
                 robot.frontRightDrive.setPower(0.5);
                 robot.frontLeftDrive.setPower(0.5);
                 robot.backRightDrive.setPower(0.5);
@@ -143,8 +141,8 @@ public class BASICAUTONOMOUS extends LinearOpMode {
             robot.backRightDrive.setPower(0);
             robot.backLeftDrive.setPower(0);
             sleep(1000);
-            robot.RslideMotor.setTargetPosition(robot.RslideMotor.getCurrentPosition() - 2000);
-            robot.LslideMotor.setTargetPosition(robot.LslideMotor.getCurrentPosition() - 2000);
+            robot.RslideMotor.setTargetPosition(robot.RslideMotor.getCurrentPosition() - 1000);
+            robot.LslideMotor.setTargetPosition(robot.LslideMotor.getCurrentPosition() - 1000);
             robot.RslideMotor.setPower(0.8);
             robot.LslideMotor.setPower(0.8);
             robot.LslideMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -295,8 +293,8 @@ public class BASICAUTONOMOUS extends LinearOpMode {
             robot.RslideMotor.setTargetPosition(0);
         }
         else{
-            robot.LslideMotor.setTargetPosition(pwr * 1000);
-            robot.RslideMotor.setTargetPosition(pwr * 1000);
+            robot.LslideMotor.setTargetPosition(pwr * 1500);
+            robot.RslideMotor.setTargetPosition(pwr * 1500);
         }
 
         robot.LslideMotor.setPower(1 * pwr);
