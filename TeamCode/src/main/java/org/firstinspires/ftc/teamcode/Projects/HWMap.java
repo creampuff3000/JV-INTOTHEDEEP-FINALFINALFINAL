@@ -70,7 +70,7 @@ public class HWMap extends Project{
         RslideMotor.setPower(0);
         LslideMotor.setPower(0);
         RelbowMotor.setPower(1);
-        clawServo.setPosition(0.4);
+        clawServo.setPosition(0.65);
 //        wristServo.setPosition(1);
     }
 }

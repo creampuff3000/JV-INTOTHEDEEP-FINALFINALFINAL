@@ -130,7 +130,7 @@ public class BASICAUTONOMOUS extends LinearOpMode {
             sleep(1000);
             robot.RslideMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             robot.LslideMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-            while (robot.DistSensor.getDistance(DistanceUnit.CM) > 16){
+            while (robot.DistSensor.getDistance(DistanceUnit.CM) > 14){
                 robot.frontRightDrive.setPower(0.5);
                 robot.frontLeftDrive.setPower(0.5);
                 robot.backRightDrive.setPower(0.5);
@@ -141,10 +141,10 @@ public class BASICAUTONOMOUS extends LinearOpMode {
             robot.backRightDrive.setPower(0);
             robot.backLeftDrive.setPower(0);
             sleep(1000);
-            robot.RslideMotor.setTargetPosition(robot.RslideMotor.getCurrentPosition() - 1000);
-            robot.LslideMotor.setTargetPosition(robot.LslideMotor.getCurrentPosition() - 1000);
-            robot.RslideMotor.setPower(0.8);
-            robot.LslideMotor.setPower(0.8);
+            robot.RslideMotor.setTargetPosition(robot.RslideMotor.getCurrentPosition() - 2500);
+            robot.LslideMotor.setTargetPosition(robot.LslideMotor.getCurrentPosition() - 2500);
+            robot.RslideMotor.setPower(1);
+            robot.LslideMotor.setPower(1);
             robot.LslideMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             robot.RslideMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             while (robot.LslideMotor.isBusy() && robot.RslideMotor.isBusy() ) {
@@ -293,8 +293,8 @@ public class BASICAUTONOMOUS extends LinearOpMode {
             robot.RslideMotor.setTargetPosition(0);
         }
         else{
-            robot.LslideMotor.setTargetPosition(pwr * 1500);
-            robot.RslideMotor.setTargetPosition(pwr * 1500);
+            robot.LslideMotor.setTargetPosition(pwr * 4000);
+            robot.RslideMotor.setTargetPosition(pwr * 4000);
         }
 
         robot.LslideMotor.setPower(1 * pwr);
