@@ -98,13 +98,17 @@ public class TestTeleop extends LinearOpMode {
           if (gamepad1.a == true){
               int rVal = robot.RelbowMotor.getCurrentPosition();
               int diff1 = 500 - rVal;
-              if (rVal > 500){
+              if (rVal > 510){
                   robot.RelbowMotor.setTargetPosition(rVal - Math.abs(diff1));
                   robot.RelbowMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                  robot.RelbowMotor.setPower(1);
               }
-              if (rVal < 500){
+              else if (rVal < 490){
                   robot.RelbowMotor.setTargetPosition(rVal + Math.abs(diff1));
                   robot.RelbowMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                  robot.RelbowMotor.setPower(1);
+              } else {
+                  robot.RelbowMotor.setPower(0);
               }
               robot.RelbowMotor.setPower(1);
               telemetry.addLine("lb: " + robot.RelbowMotor.getCurrentPosition());

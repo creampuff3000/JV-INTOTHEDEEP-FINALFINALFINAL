@@ -69,8 +69,16 @@ public class HWMap extends Project{
         backLeftDrive.setPower(0);
         RslideMotor.setPower(0);
         LslideMotor.setPower(0);
-        RelbowMotor.setPower(1);
+        RelbowMotor.setPower(0.5);
         clawServo.setPosition(0.65);
+        try {
+            Thread.sleep(5000);
+        }
+        catch(Exception e){
+        }
+        RelbowMotor.setTargetPosition(RelbowMotor.getCurrentPosition());
+        RelbowMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        RelbowMotor.setPower(0.1);
 //        wristServo.setPosition(1);
     }
 }

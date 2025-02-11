@@ -37,7 +37,7 @@ public class SparkfunAuto extends LinearOpMode {
         // Configure OTOS (same as in the TeleOp example)
         myOtos.setLinearUnit(DistanceUnit.INCH);
         myOtos.setAngularUnit(AngleUnit.DEGREES);
-        myOtos.setOffset(new SparkFunOTOS.Pose2D(0, 0, 0));
+        myOtos.setOffset(new SparkFunOTOS.Pose2D(0, 3.95, 0));
         myOtos.setLinearScalar(1.0);
         myOtos.setAngularScalar(1.0);
         myOtos.calibrateImu();
@@ -92,8 +92,7 @@ public class SparkfunAuto extends LinearOpMode {
         double rightPower = drivePower + turnPower;
 
         // Assuming you have access to motor objects
-        // leftMotor.setPower(leftPower);
-        // rightMotor.setPower(rightPower);
+
     }
 
     private void stopMotors() {
