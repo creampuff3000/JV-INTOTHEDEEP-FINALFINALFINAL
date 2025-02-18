@@ -5,15 +5,16 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
+import org.firstinspires.ftc.teamcode.Projects.HWMap;
 
 @Autonomous(name = "Autonomous with OTOS", group = "Autonomous")
 public class SparkfunAuto extends LinearOpMode {
-
+    public HWMap robot = new HWMap();
     SparkFunOTOS myOtos;
-
     @Override
     public void runOpMode() throws InterruptedException{
         // Initialize the OTOS sensor
+        robot.init(hardwareMap);
         myOtos = hardwareMap.get(SparkFunOTOS.class, "sensor_otos");
         configureOtos();
 
@@ -27,7 +28,7 @@ public class SparkfunAuto extends LinearOpMode {
         myOtos.resetTracking();
 
         // Example: Move to target (X: 24, Y: 24) while maintaining a heading of 90 degrees
-        navigateToTarget(24, 24, 90);
+        navigateToTarget(0, 7.4, 0);
 
         telemetry.addLine("Navigation complete!");
         telemetry.update();
@@ -37,7 +38,7 @@ public class SparkfunAuto extends LinearOpMode {
         // Configure OTOS (same as in the TeleOp example)
         myOtos.setLinearUnit(DistanceUnit.INCH);
         myOtos.setAngularUnit(AngleUnit.DEGREES);
-        myOtos.setOffset(new SparkFunOTOS.Pose2D(0, 3.95, 0));
+        myOtos.setOffset(new SparkFunOTOS.Pose2D(0, 0, 0));
         myOtos.setLinearScalar(1.0);
         myOtos.setAngularScalar(1.0);
         myOtos.calibrateImu();
@@ -90,14 +91,17 @@ public class SparkfunAuto extends LinearOpMode {
         // Example motor control logic (adjust for your drivetrain)
         double leftPower = drivePower - turnPower;
         double rightPower = drivePower + turnPower;
-
-        // Assuming you have access to motor objects
-
+        robot.frontLeftDrive.setPower(leftPower);
+        robot.frontRightDrive.setPower(rightPower);
+        robot.backLeftDrive.setPower(leftPower);
+        robot.frontRightDrive.setPower(rightPower);
     }
 
     private void stopMotors() {
         // Example motor stop logic
-        // leftMotor.setPower(0);
-        // rightMotor.setPower(0);
+        robot.frontLeftDrive.setPower(0);
+        robot.frontRightDrive.setPower(0);
+        robot.backLeftDrive.setPower(0);
+        robot.frontRightDrive.setPower(0);
     }
 }
