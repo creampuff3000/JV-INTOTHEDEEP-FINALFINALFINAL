@@ -33,7 +33,7 @@ public class basicopencv extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
 
 
-        //initialize hardware map
+        //initialize hardwbnjnjbhare map
         robot.init(hardwareMap);
         Parking Alliance = Parking.FBlue;
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName()); // init the camera?
